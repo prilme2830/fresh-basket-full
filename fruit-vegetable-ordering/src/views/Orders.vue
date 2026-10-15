@@ -55,6 +55,9 @@ onMounted(() => {
     <div v-for="order in filteredOrders" :key="order.id" class="order-card">
       <div class="order-info">
         <h3>Order #{{ order.id }}</h3>
+        <p class="order-customer">
+          <strong>Customer:</strong> {{ order.userName || "Unknown" }}
+        </p>
         <p>{{ formatDate(order.date) }}</p>
       </div>
       <div>
@@ -66,7 +69,6 @@ onMounted(() => {
         </div>
         <strong class="order-total">₱{{ order.total.toFixed(2) }}</strong>
         <div class="order-meta" v-if="order.paymentMethod">
-          <p><strong>Customer:</strong> {{ order.userName }}</p>
           <p><strong>Payment Method:</strong> {{ order.paymentMethod }}</p>
           <p><strong>Address:</strong> {{ order.address }}</p>
         </div>
